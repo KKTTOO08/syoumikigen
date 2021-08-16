@@ -1,5 +1,15 @@
 <% if logged_in? %>
-  <p>ログイン完了ユーザ</p>
+  <!--表示とプルダウンをDBから -->
+  <%= form_with(model: @item) do |f| %>
+      <%= f.label :name, '食材名' %>
+      <%= f.text_area :name %>
+      
+      <%= f.label :type_id, 'タイプ' %>
+      <%= f.select :type_id, [["葉野菜(2日間",1], ["根菜(7日間)",2],["トマト(6日間)",3],["キノコ(3日間)",4],["卵(7日間)",5],["納豆(7日間)",6],["牛乳(5日間)",7],["肉(2日間)",8],["魚(2日間",9],["その他加工食品(5日間",10]], include_blank:"選択してください" %>
+      
+      <%= f.submit '登録' %>
+  <% end %>
+  <%= render 'items/items', items: @items %>
 <% else %>
   <div class="bg-secondary p-3 p-sm-5 my-4 rounded">
     <div class="text-center text-white">
