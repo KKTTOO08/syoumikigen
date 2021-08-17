@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_14_223129) do
+ActiveRecord::Schema.define(version: 2021_08_18_223129) do
 
   create_table "items", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
-    t.bigint "type_id", null: false
+    t.bigint "syumoku_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["type_id"], name: "index_items_on_type_id"
+    t.index ["syumoku_id"], name: "index_items_on_syumoku_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
-  create_table "types", charset: "utf8mb4", force: :cascade do |t|
+  create_table "syumokus", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.integer "kigen"
     t.datetime "created_at", precision: 6, null: false
@@ -36,6 +36,6 @@ ActiveRecord::Schema.define(version: 2021_08_14_223129) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "items", "types"
+  add_foreign_key "items", "syumokus"
   add_foreign_key "items", "users"
 end

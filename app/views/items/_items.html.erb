@@ -3,7 +3,7 @@
         <% items.each do |item| %>
             <li>
                 <p>アイテム名：<%= item.name %></p>
-                <p>残日数：<%= item.generate_zanbi %></p>
+                <p>残日数：<%= item.zanbi %></p>
                 <% if current_user == item.user %>
                    <%= link_to "削除", item, method: :delete, data: {confirm: "You sure?" } %>
                 <% end %>

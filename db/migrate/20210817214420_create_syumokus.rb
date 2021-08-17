@@ -1,6 +1,6 @@
-class CreateTypes < ActiveRecord::Migration[6.1]
+class CreateSyumokus < ActiveRecord::Migration[6.1]
   def change
-    create_table :types do |t|
+    create_table :syumokus do |t|
       t.string :name
       t.integer :kigen
 
