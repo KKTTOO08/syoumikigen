@@ -1,13 +1,18 @@
 <% if items.any? %>
-    <ul>
+    <table class="table">
+        <tr>
+            <th>食材</th>
+            <th>残日数</th>
+            <th></th>
+        </tr>
         <% items.each do |item| %>
-            <li>
-                <p>アイテム名：<%= item.name %></p>
-                <p>残日数：<%= item.zanbi %></p>
-                <% if current_user == item.user %>
+        <tr>
+            <th><%= item.name %></th>
+            <th><%= item.zanbi %></th>
+            <th><% if current_user == item.user %>
                    <%= link_to "削除", item, method: :delete, data: {confirm: "You sure?" } %>
-                <% end %>
-            </li>
+                <% end %></th>
+        </tr>
         <% end %>
-    </ul>
-<% end %>
+    </table>
+    <% end %>
