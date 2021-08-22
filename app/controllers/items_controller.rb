@@ -5,11 +5,11 @@ class ItemsController < ApplicationController
   def create
     @item = current_user.items.build(item_params)
     if @item.save
-      flash[:success] = 'メッセージを投稿しました。'
+      flash[:success] = '食材を登録しました。'
       redirect_to root_path
     else
       @items = current_user.items.order(id: :desc).each{|i| i.generate_zanbi }.sort_by{|item| item.zanbi.to_i}
-      flash.now[:danger] = 'メッセージの投稿に失敗しました。'
+      flash.now[:danger] = '食材の登録に失敗しました。'
       render 'toppages/index'
     end
   end
